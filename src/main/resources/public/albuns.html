@@ -69,21 +69,16 @@
           <h3>Cadastro de Álbuns</h3>
         </div>
 
-        <form id="borda">
+        <form id="borda" action="/albuns">
 
           <div  class="form-group">
             <label for="nome">Nome</label>
-            <input type="text" class="form-control" id="nome" placeholder="">
+            <input name="nome" type="text" class="form-control" id="nome" placeholder="">
           </div>
           
           <div class="form-group">
             <label for="ano">Ano</label>
-            <input type="number" class="form-control" id="ano" placeholder="1999">
-          </div>
-
-          <div class="form-group">
-            <label for="duracaoTotal">Duração Total</label>
-            <input type="number" class="form-control" id="duracaoTotal" placeholder="00:00">
+            <input name="ano" type="number" class="form-control" id="ano" placeholder="1999">
           </div>
 
           <div class="form-group">
@@ -132,15 +127,16 @@
           <h3>Busca de Álbuns</h3>
         </div>
 
-        <form id="borda">
+        <form id="borda" action="/albuns" method="get">
           <div class="form-group">
             <label for="nome">Informe o nome abaixo</label><br>
-            <input type="text" class="form-control" id="nome" placeholder=""><br>
+            <input name="nome" type="text" class= "form-control" id="nome" placeholder=""><br>
             <button id="btSalvaMusica" type="submit" class="btn btn-primary mb-2">Buscar</button><br>
           </div>          
           <div class="form-group">
             <label id="resultado" for="exampleFormControlTextarea1">Resultado</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">
+            </textarea>
           </div>
         </form>    
       </div>
@@ -170,7 +166,7 @@
               <li><a href="musicas.html">Músicas</a></li>
               <li><a href="artista.html">Artistas</a></li>
               <li><a href="albuns.html">Álbuns</a></li>              
-              <li><a href="index.html#services">Lançamentos</a></li>               
+              <li><a href="index.html#services">Lançamentos</a></li>
             </ul>
           </div>
 
