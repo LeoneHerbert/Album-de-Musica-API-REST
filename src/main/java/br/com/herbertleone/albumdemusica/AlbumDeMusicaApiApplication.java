@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
 @EntityScan(basePackages = "br.com.herbertleone.albumdemusica.model")
-public class AlbumdemusicaApplication {
+public class AlbumDeMusicaApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AlbumdemusicaApplication.class, args);
+		SpringApplication.run(AlbumDeMusicaApiApplication.class, args);
 	}
 
 }
