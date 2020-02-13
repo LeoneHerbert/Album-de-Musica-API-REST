@@ -17,13 +17,28 @@ public class Artista {
     @Column(nullable = false)
     private String nacionalidade;
 
-    @ManyToMany(mappedBy = "participantes", cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "artista_album",
+            joinColumns = {@JoinColumn(name = "artista_id")},
+            inverseJoinColumns = {@JoinColumn(name = "album_id")}
+    )
     private Set<Album> albuns = new LinkedHashSet<>();
 
-    @ManyToMany(mappedBy = "autores", cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "autor_musica",
+            joinColumns = {@JoinColumn(name = "artista_id")},
+            inverseJoinColumns = {@JoinColumn(name = "musica_id")}
+    )
     private Set<Musica> musicasComoAutor = new LinkedHashSet<>();
 
-    @ManyToMany(mappedBy = "interpretes", cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "interprete_musica",
+            joinColumns = {@JoinColumn(name = "artista_id")},
+            inverseJoinColumns = {@JoinColumn(name = "musica_id")}
+    )
     private Set<Musica> musicasInterpretadas = new LinkedHashSet<>();
 
     public Integer getId() {
@@ -48,5 +63,21 @@ public class Artista {
 
     public void setNacionalidade(String nacionalidade) {
         this.nacionalidade = nacionalidade;
+    }
+
+    public Set<Album> getAlbuns() {
+        return albuns;
+    }
+
+    public void setAlbuns(Set<Album> albuns) {
+        this.albuns = albuns;
+    }
+
+    public void setMusicasComoAutor(Set<Musica> musicasComoAutor) {
+        this.musicasComoAutor = musicasComoAutor;
+    }
+
+    public void setMusicasInterpretadas(Set<Musica> musicasInterpretadas) {
+        this.musicasInterpretadas = musicasInterpretadas;
     }
 }

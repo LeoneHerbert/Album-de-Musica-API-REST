@@ -17,15 +17,15 @@ public class Album {
     @Column(nullable = false)
     private Integer ano;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(
-            name = "artista_album",
-            joinColumns = {@JoinColumn(name = "album_id")},
-            inverseJoinColumns = {@JoinColumn(name = "artista_id")}
-    )
+    @ManyToMany(mappedBy = "albuns", cascade = CascadeType.PERSIST)
     private Set<Artista> participantes = new LinkedHashSet<>();
 
-    @ManyToMany(mappedBy = "albuns", cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "album_musica",
+            joinColumns = {@JoinColumn(name = "album_id")},
+            inverseJoinColumns = {@JoinColumn(name = "musica_id")}
+    )
     private Set<Musica> musicas = new LinkedHashSet<>();
 
     public Integer getId() {
@@ -50,5 +50,17 @@ public class Album {
 
     public void setAno(Integer ano) {
         this.ano = ano;
+    }
+
+    public Set<Musica> getMusicas() {
+        return musicas;
+    }
+
+    public void setMusicas(Set<Musica> musicas) {
+        this.musicas = musicas;
+    }
+
+    public void setParticipantes(Set<Artista> participantes) {
+        this.participantes = participantes;
     }
 }
